@@ -5,7 +5,7 @@ import { Box, useTheme } from '@mui/material';
 import { Navbar } from '../../components/Navbar';
 import { Inbox } from './Inbox';
 import { Sent } from './Sent';
-import { SendMail } from '../SendMail';
+import { SendMail } from './SendMail';
 import { ViewMail } from './ViewMail';
 
 export function Main(props) {

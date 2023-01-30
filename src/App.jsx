@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 
 import { Signin } from './pages/loggedout/Signin';
-import { PrivateRoute } from './components/PrivateRoute';
+// import { PrivateRoute } from './components/PrivateRoute';
 import { Main } from './pages/loggedin';
 
 import { store } from './store';
@@ -17,7 +17,7 @@ function App() {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Routes>
-            <PrivateRoute path="/mail" element={<Main />} />
+            <Route path="/mail" element={<Main />} />
             <Route path="/" element={<Signin />} />
           </Routes>
         </ThemeProvider>

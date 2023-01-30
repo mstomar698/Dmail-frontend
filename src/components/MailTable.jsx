@@ -15,7 +15,7 @@ import {
 import { MailTabelHead } from './MailTableHead';
 import { MailToolBar } from './MailToolBar';
 
-export function Mailtable(props) {
+export function MailTable(props) {
   const { data } = props;
   const [selected, setSelected] = useState([]);
   const [page, setPage] = useState(0);

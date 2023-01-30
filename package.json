@@ -9,6 +9,7 @@
     "@mui/lab": "^5.0.0-alpha.117",
     "@mui/material": "^5.11.6",
     "@project-serum/sol-wallet-adapter": "^0.2.6",
+    "@reduxjs/toolkit": "^1.9.2",
     "@solana/web3.js": "^1.73.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

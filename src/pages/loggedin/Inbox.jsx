@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Fab } from '@mui/material';
 import { Edit as EditIcon } from '@mui/icons-material';
 
-import { Mailtable } from '../../components';
+import { MailTable } from '../../components';
 import { getAccountData, setActivePage } from '../../store/actions';
 
 export function Inbox(props) {
@@ -21,7 +21,7 @@ export function Inbox(props) {
 
   return (
     <Fragment>
-      <Mailtable data={inbox} history={props.history} />
+      <MailTable data={inbox} history={props.history} />
       <Fab
         variant="extended"
         size="large"

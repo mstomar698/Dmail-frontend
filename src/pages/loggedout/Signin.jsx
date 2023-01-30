@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Box, Stack, TextField, Typography } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 
-import { connectWallet } from '../../store/actions';
-import { SentimentSatisfied } from '@mui/icons-material';
+import { connectWallet } from '../../store/actions/accountAction';
 
 export function Signin(props) {
   const [seed, setSeed] = useState('');

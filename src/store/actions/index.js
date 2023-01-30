@@ -1,3 +1,3 @@
 export * from './pageActions';
-export * from './accountActions';
+export * from './accountAction';
 export * from './mailActions';
