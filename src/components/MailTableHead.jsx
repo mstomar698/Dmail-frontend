@@ -21,11 +21,11 @@ export function MailTabelHead(props) {
             inputProps={{ 'aria-label': 'select al mail' }}
           />
         </TableCell>
-        {headCells.map((headCell) => {
+        {headCells.map((headCell) => (
           <TableCell key={headCell.id} align="left" padding="normal">
             {headCell.label}
-          </TableCell>;
-        })}
+          </TableCell>
+        ))}
       </TableRow>
     </TableHead>
   );

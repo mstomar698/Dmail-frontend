@@ -19,6 +19,7 @@ import {
 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@emotion/react';
+import { useSelector } from 'react-redux';
 
 const drawerWidth = 240;
 const menuItems = [
@@ -39,7 +40,12 @@ export function Navbar(props) {
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
   const links = useRef([]);
+
+  const selectedPage = useSelector((state) => state.page.selectedPage);
+  const wallet = useSelector((state) => state.account.wallet);
+
   const handleLogout = async () => {
+    await wallet.disconnect();
     props.history.push('/');
   };
 
@@ -74,7 +80,10 @@ export function Navbar(props) {
             key={index}
             ref={(node) => (links.current[index] = node)}
           >
-            <ListItemButton onClick={handleLogout}>
+            <ListItemButton
+              selected={selectedPage === el.name}
+              onClick={() => links.current[index].click()}
+            >
               <ListItemIcon>{el.icon}</ListItemIcon>
               <ListItemText primary={el.name} />
             </ListItemButton>
@@ -92,7 +101,7 @@ export function Navbar(props) {
   );
 
   const container =
-    props.window !== undefined ? () => props.window().document.body : undefined;
+    window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: 'flex' }}>

@@ -1,13 +1,14 @@
 import React from 'react';
-import { CssBaseline, ThemeProvider } from '@mui/material';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 
 import { Signin } from './pages/loggedout/Signin';
-
-import theme from './theme';
+import { PrivateRoute } from './components/PrivateRoute';
 import { Main } from './pages/loggedin';
+
 import { store } from './store';
-import { Provider } from 'react-redux';
+import theme from './theme';
 
 function App() {
   return (
@@ -16,8 +17,8 @@ function App() {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Routes>
+            <PrivateRoute path="/mail" element={<Main />} />
             <Route path="/" element={<Signin />} />
-            <Route path="/mail" element={<Main />} />
           </Routes>
         </ThemeProvider>
       </Router>

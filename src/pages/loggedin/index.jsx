@@ -13,7 +13,7 @@ export function Main(props) {
 
   return (
     <Fragment>
-      <Navbar />
+      <Navbar history={props.history} />
       <Box
         sx={{
           width: { sm: 'calc(100% -240px)' },

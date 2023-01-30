@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Box, Stack, TextField, Typography } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
-import { useDispatch, useSelector } from 'react-redux';
+
 import { connectWallet } from '../../store/actions';
+import { SentimentSatisfied } from '@mui/icons-material';
 
 export function Signin(props) {
   const [seed, setSeed] = useState('');
@@ -10,10 +12,18 @@ export function Signin(props) {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.account.loading);
 
+  const handleChange = (event) => {
+    setSeed(event.target.value);
+  };
+
   const handleSignin = async () => {
     await dispatch(connectWallet(seed));
     props.history.push('/mail/inbox');
   };
+
+  useEffect(() => {
+    document.title = 'Mail';
+  }, []);
 
   return (
     <Box
@@ -36,7 +46,7 @@ export function Signin(props) {
           id="account-seed"
           label="Account Seed"
           value={seed}
-          onChange={(event) => setSeed(event.target.value)}
+          onChange={handleChange}
           required
         />
         <LoadingButton

@@ -18,7 +18,12 @@ import {
 } from '@mui/icons-material';
 
 export function ViewMail(props) {
+  const mail = props.history.loaction.state;
   const theme = useTheme();
+
+  useEffect(() => {
+    document.title = 'View Mail';
+  }, []);
 
   return (
     <Box
@@ -39,7 +44,7 @@ export function ViewMail(props) {
         }}
         elevation={3}
       >
-        <Typography variant="h3">subject</Typography>
+        <Typography variant="h3">{mail.subject}</Typography>
 
         <List sx={{ width: '100%', p: 0 }}>
           <ListItem sx={{ p: 0, pl: 1 }}>
@@ -58,17 +63,19 @@ export function ViewMail(props) {
                 >
                   <Typography variant="subtitle2">From Address</Typography>
                   <Typography variant="caption">
-                    {new Date().toLocaleDateString()}
+                    {new Date(mail.sentDate).toLocaleDateString()}
                   </Typography>
                 </Box>
               }
-              secondary={<Typography variant="caption">to Address</Typography>}
+              secondary={
+                <Typography variant="caption">to {mail.toAddress}</Typography>
+              }
             />
           </ListItem>
         </List>
 
         <Typography sx={{ textAlign: 'justify', overflowWrap: 'break-word' }}>
-          body
+          {mail.body}
         </Typography>
 
         <Box
