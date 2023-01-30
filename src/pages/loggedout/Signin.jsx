@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Stack, TextField, Typography } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
+import { useDispatch, useSelector } from 'react-redux';
+import { connectWallet } from '../../store/actions';
 
 export function Signin(props) {
+  const [seed, setSeed] = useState('');
+
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state.account.loading);
+
   const handleSignin = async () => {
+    await dispatch(connectWallet(seed));
     props.history.push('/mail/inbox');
   };
 
@@ -24,14 +32,21 @@ export function Signin(props) {
       >
         <Typography variant="h5">Welcome to Mail</Typography>
         <Typography variant="caption">Connect your wallet</Typography>
-        <TextField id="account-seed" label="Account Seed" required />
+        <TextField
+          id="account-seed"
+          label="Account Seed"
+          value={seed}
+          onChange={(event) => setSeed(event.target.value)}
+          required
+        />
         <LoadingButton
           variant="contained"
           size="medium"
           color="secondary"
           onClick={handleSignin}
+          loading={loading}
         >
-          SignIn
+          Signin
         </LoadingButton>
       </Stack>
     </Box>
